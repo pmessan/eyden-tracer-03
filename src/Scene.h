@@ -73,7 +73,7 @@ public:
 	bool Occluded(Ray& ray)
 	{
 #ifdef ENABLE_BSP
-		return m_pBSPTree->Intersect(ray);
+		// return m_pBSPTree->Intersect(ray);
 #else
 		for (auto pPrim : m_vpPrims)
 			if (pPrim->Occluded(ray)) return true;
@@ -90,6 +90,9 @@ public:
 	{
 		CBoundingBox res;
 		// --- PUT YOUR CODE HERE ---
+		for (auto obj: m_vpPrims)
+			res.extend(obj->calcBounds());
+
 		return res;
 	}
 	/**
