@@ -80,7 +80,17 @@ public:
 	 * @param[in,out] t0 The distance from ray origin at which the ray enters the bounding box
 	 * @param[in,out] t1 The distance from ray origin at which the ray leaves the bounding box
 	 */
-	void clip(const Ray& ray, float& t0, float& t1)
+	void clip(const Ray& ray, float& t0, float& t1);
+		// --- PUT YOUR CODE HERE 
+	
+	
+public:
+	Vec3f m_min;	///< The minimal point defying the size of the bounding box
+	Vec3f m_max;	///< The maximal point defying the size of the bounding box
+};
+
+
+void CBoundingBox::clip(const Ray& ray, float& t0, float& t1)
 	{
 		// --- PUT YOUR CODE HERE ---
 		float nx = (m_min[0] - ray.org[0]) / ray.dir[0];
@@ -110,9 +120,3 @@ public:
 		}
 		return;
 	}
-	
-	
-public:
-	Vec3f m_min;	///< The minimal point defying the size of the bounding box
-	Vec3f m_max;	///< The maximal point defying the size of the bounding box
-};
